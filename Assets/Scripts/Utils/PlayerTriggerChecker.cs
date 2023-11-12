@@ -14,7 +14,7 @@ public class PlayerTriggerChecker : MonoBehaviour
     public GameObject obj { get; private set; }
     public Rigidbody objRb { get; private set; }
 
-    public UEvent OnTriggered= new UEvent();
+    public UEvent<Transform> OnTriggered = new UEvent<Transform>();
 
     public static bool DoesMaskContainsLayer(LayerMask layermask, int layer)
     {
@@ -23,7 +23,7 @@ public class PlayerTriggerChecker : MonoBehaviour
 
     private void Awake()
     {
-        hasObject = true;
+        hasObject = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,7 +34,7 @@ public class PlayerTriggerChecker : MonoBehaviour
         objRb = other.attachedRigidbody;
         hasObject = true;
 
-        OnTriggered.TryInvoke();
+        OnTriggered.TryInvoke(other.transform);
     }
 
     private void OnTriggerExit(Collider other)
@@ -51,12 +51,12 @@ public class PlayerTriggerChecker : MonoBehaviour
         if (searchInRigidbody)
         {
             if (!DoesMaskContainsLayer(layersToCheck, other.attachedRigidbody.gameObject.layer)) return false;
-            if (!string.IsNullOrEmpty(tagToSearch) && LayerMask.LayerToName(other.attachedRigidbody.gameObject.layer) == tagToSearch) return false;
+            if (!string.IsNullOrEmpty(tagToSearch) && other.attachedRigidbody.gameObject.tag == tagToSearch) return false;
         }
         else
         {
             if (!DoesMaskContainsLayer(layersToCheck, other.gameObject.layer)) return false;
-            if (!string.IsNullOrEmpty(tagToSearch) && LayerMask.LayerToName(other.gameObject.layer) == tagToSearch) return false;
+            if (!string.IsNullOrEmpty(tagToSearch) && other.gameObject.tag == tagToSearch) return false;
         }
 
         return true;

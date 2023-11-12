@@ -40,7 +40,7 @@ public class Deathbounds : MonoBehaviour
         CharacterMovController.current.ResetPos();
         if (isShock)
         {
-            CharacterAnimController.current.Shock(false);
+            //CharacterAnimController.current.Shock(false);
             CharacterVFXController.current.Shock(false);
             CharacterMovController.current.FreezePlayer(true);
         }

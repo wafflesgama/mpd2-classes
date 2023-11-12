@@ -23,7 +23,9 @@ public class CharacterAnimController : MonoBehaviour
     {
         current = this;
         animator = GetComponent<Animator>();
-        playerInputHandler.input_interact.Onpressed.Subscribe(eventHandler, Kick);
+
+        if (playerInputHandler != null)
+            playerInputHandler.input_interact.Onpressed.Subscribe(eventHandler, Kick);
     }
     void Start()
     {
@@ -78,14 +80,19 @@ public class CharacterAnimController : MonoBehaviour
         animator.SetTrigger("Kick");
     }
 
-    public void Shock(bool on=true)
+    public void Shock()
     {
-        animator.SetBool("Shock",on);
+        animator.SetTrigger("Shock");
     }
 
     public void Recover()
     {
         animator.SetTrigger("Recover");
+    }
+
+    public void Look(bool on)
+    {
+        animator.SetBool("Looking",on);
     }
 
 }

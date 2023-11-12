@@ -11,7 +11,9 @@ public class CharacterVFXController : MonoBehaviour
 
     [Header("Dust Trail")]
     public VisualEffect dustVfx;
+    public bool emitingDust = false;
     public int dustRate;
+
     public float minSpeed;
     public AnimationCurve dustCurve;
     int dustRateVar, dustJumpVar, dustLandVar;
@@ -44,7 +46,6 @@ public class CharacterVFXController : MonoBehaviour
     {
         if (mov != null)
         {
-
             mov.OnJump.Subscribe(eventHandler, Jump);
             mov.OnLand.Subscribe(eventHandler, Land);
         }
@@ -75,15 +76,16 @@ public class CharacterVFXController : MonoBehaviour
 
     void AnimateDust()
     {
-        //if (!mov.isSprinting) return;
-        var show = mov.horizontalVelMag > minSpeed ? 1 : 0;
-        var speedFraction = mov.horizontalVelMag / mov.goalVelocity;
-        float dustAmount = dustCurve.Evaluate(speedFraction) * dustRate * show;
-        dustAmount = mov.isGrounded ? dustAmount : 0;
+        if (!emitingDust) return;
 
-
-        if (mov.isUsingJetpack)
-            dustAmount = jetpackDustAmount;
+        float dustAmount = dustRate;
+        if (mov != null)
+        {
+            var show = mov.horizontalVelMag > minSpeed ? 1 : 0;
+            var speedFraction = mov.horizontalVelMag / mov.goalVelocity;
+            dustAmount = dustCurve.Evaluate(speedFraction) * dustRate * show;
+            dustAmount = mov.isGrounded ? dustAmount : 0;
+        }
 
         dustVfx.SetFloat(dustRateVar, dustAmount);
     }
