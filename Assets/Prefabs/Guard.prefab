@@ -93,6 +93,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3114946276730532445}
   - component: {fileID: 56437823598769819}
+  - component: {fileID: 6637444209182390085}
+  - component: {fileID: 9160208473237905089}
   m_Layer: 0
   m_Name: NPC Controller
   m_TagString: Untagged
@@ -140,6 +142,52 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &6637444209182390085
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624133991512822549}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b09737dd31dd2c4a8ff8f36e004e38d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9160208473237905089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624133991512822549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73cfb68b8b44ddb49bd7a7a404cb55ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
+  agent: {fileID: 56437823598769819}
+  animationController: {fileID: 4525614896442980678}
+  triggerChecker: {fileID: 6081525447958197460}
+  vFXController: {fileID: 7044176327244285103}
+  Param_Patrol: Patrol
+  Param_Suspicious: Suspicious
+  Param_Detected: Detected
+  patrolPoints:
+  - {fileID: 7255709337614317256}
+  - {fileID: 4105165771934336483}
+  detectionMeter: {fileID: 0}
+  detectedMeter: {fileID: 0}
 --- !u!1 &949642385197671941
 GameObject:
   m_ObjectHideFlags: 0
