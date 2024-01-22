@@ -14,7 +14,7 @@ public class PlayerTriggerChecker : MonoBehaviour
     public GameObject obj { get; private set; }
     public Rigidbody objRb { get; private set; }
 
-    public UEvent OnTriggered= new UEvent();
+    public UEvent<Transform> OnTriggered= new UEvent<Transform>();
 
     public static bool DoesMaskContainsLayer(LayerMask layermask, int layer)
     {
@@ -34,7 +34,7 @@ public class PlayerTriggerChecker : MonoBehaviour
         objRb = other.attachedRigidbody;
         hasObject = true;
 
-        OnTriggered.TryInvoke();
+        OnTriggered.TryInvoke(other.transform);
     }
 
     private void OnTriggerExit(Collider other)
