@@ -215,8 +215,11 @@ public class CharacterMovController : MonoBehaviour
         //Invoke event to outside listeners
         OnJump.TryInvoke();
 
+
+        float jumpDif = jumpForce - rb.velocity.y;
+
         //Add the force
-        rb.AddForce(Vector3.up * rb.mass * jumpForce, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * rb.mass * jumpDif, ForceMode.Impulse);
     }
 
     private void JumpDownForce()
