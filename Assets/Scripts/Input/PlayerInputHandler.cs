@@ -47,6 +47,7 @@ public class PlayerInputHandler : MonoBehaviour
     public Button<Vector2> input_look = new Button<Vector2>();
     public Button<float> input_jump = new Button<float>();
     public Button<float> input_sprint = new Button<float>();
+    public Button<float> input_crouch = new Button<float>();
     public Button<float> input_pause = new Button<float>();
     public Button<float> input_interact = new Button<float>();
 
@@ -56,6 +57,7 @@ public class PlayerInputHandler : MonoBehaviour
     public class Button<TValue>  //Suported data types--> float | Vector2 | Vector3 | Vector4
     {
         public TValue value { get; set; }
+
         //public event ClickAction Onpressed;
         //public event ClickAction Onreleased;
         public UEvent Onpressed = new UEvent();
@@ -97,6 +99,7 @@ public class PlayerInputHandler : MonoBehaviour
     private void OnLook(InputValue inputValue) => SetInputInfo(input_look, inputValue);
     private void OnJump(InputValue inputValue) => SetInputInfo(input_jump, inputValue);
     private void OnSprint(InputValue inputValue) => SetInputInfo(input_sprint, inputValue);
+    private void OnCrouch(InputValue inputValue) => SetInputInfo(input_crouch, inputValue);
     private void OnPause(InputValue inputValue) => SetInputInfo(input_pause, inputValue);
     private void OnInteract(InputValue inputValue) => SetInputInfo(input_interact, inputValue);
 
@@ -157,3 +160,6 @@ public class PlayerInputHandler : MonoBehaviour
     #endregion
 
 }
+
+
+

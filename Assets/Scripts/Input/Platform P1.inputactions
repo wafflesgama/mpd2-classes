@@ -31,6 +31,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Sprint",
+                    "type": "Value",
+                    "id": "cbb701f5-1fc7-439f-834a-7dd5d0e02f63",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Crouch",
+                    "type": "Value",
+                    "id": "4164bd47-f65d-4fdb-928e-c1d5df28ace9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -108,6 +126,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cc7c757e-9bb1-4d9f-b7b7-22a9d88dfddf",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4867d66-0c53-4586-a477-82546146597d",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Crouch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
